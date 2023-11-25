@@ -3,6 +3,7 @@ package osipaandr;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class RuNumbersByWordsTest {
 
@@ -60,5 +61,15 @@ class RuNumbersByWordsTest {
         assertInclination("двадцать тысяч четыреста окон", 20_400, windowParadigm);
         assertInclination("восемнадцать миллионов карандашей", 18_000_000, pencilParadigm);
         assertInclination("двести четыре миллиона сто две ручки", 204_000_102, penParadigm);
+    }
+
+    @Test
+    void testIllegalArguments() {
+        assertThrows(IllegalArgumentException.class,
+                () -> RuNumbersByWords.incline(-1));
+        assertThrows(IllegalArgumentException.class,
+                () -> RuNumbersByWords.incline(0));
+        assertThrows(IllegalArgumentException.class,
+                () -> RuNumbersByWords.incline(1_000_000_000));
     }
 }

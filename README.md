@@ -25,3 +25,5 @@ Paradigm windowParadigm=new Paradigm(
         RuNumbersByWords.incline(4,windowParadigm);
 // четыре окна
 ```
+
+Поддерживаются числа менее 1 миллиарда.

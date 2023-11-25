@@ -1,6 +1,8 @@
 plugins {
+    id 'signing'
     id 'java-library'
     id 'maven-publish'
+    id "io.github.gradle-nexus.publish-plugin" version "2.0.0-rc-1"
 }
 
 group = 'com.osipaandr'
@@ -10,9 +12,38 @@ repositories {
     mavenCentral()
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 publishing {
     publications {
+        mavenJava(MavenPublication) {
+            pom {
+                url = 'https://github.com/osipaandr/ru-numbers-by-words'
+                inceptionYear = '2023'
 
+                licenses {
+                    license {
+                        name = 'Unlicensed'
+                        distribution = 'repo'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'osipaandr'
+                        name = 'Andrey Osipenko'
+                        email = 'osipaandr@gmail.com'
+                    }
+                }
+                scm {
+                    url = 'https://github.com/osipaandr/ru-numbers-by-words'
+                    connection = 'scm:https://github.com/osipaandr/ru-numbers-by-words'
+                }
+            }
+
+        }
     }
 }
 

@@ -180,6 +180,9 @@ public class RuNumbersByWords {
     }
 
     public static String incline(int num) {
+        if (num >= 1_000_000_000)
+            throw new IllegalArgumentException("Argument must be less than 1 billion");
+
         return incline(num, Gender.MASCULINE);
     }
 
