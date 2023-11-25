@@ -1,0 +1,26 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+group = 'com.osipaandr'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+publishing {
+    publications {
+
+    }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
