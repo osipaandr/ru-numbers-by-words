@@ -179,6 +179,10 @@ public class RuNumbersByWords {
         }
     }
 
+    /**
+     * @param num Число, которое требуется представить числительным.
+     * @return Строковое представление числительного.
+     */
     public static String incline(int num) {
         if (num >= 1_000_000_000)
             throw new IllegalArgumentException("Argument must be less than 1 billion");
@@ -186,6 +190,13 @@ public class RuNumbersByWords {
         return incline(num, Gender.MASCULINE);
     }
 
+    /**
+     * Склоняет переданное числительное в соответствии с заданным родом.
+     *
+     * @param num Число, которое требуется представить числительным.
+     * @param gender Род, в котором числительное должно быть склонено.
+     * @return Строковое представление числительного в склоненной форме, согласованной с указанным родом.
+     */
     public static String incline(int num, Gender gender) {
         if (num < 1)
             throw new IllegalArgumentException("Argument must be positive");
@@ -204,6 +215,13 @@ public class RuNumbersByWords {
                 : String.format("%s %s", incline(divOfMillion, millionParadigm), rest);
     }
 
+    /**
+     * Склоняет переданное числительное в соответствии с заданным образцом склонения.
+     *
+     * @param num Число, которое требуется представить числительным.
+     * @param paradigm Образец склонения, содержащий информацию о роде и формах существительного в различных падежах.
+     * @return Строковое представление числительного в склоненной форме, согласованной с переданным образцом.
+     */
     public static String incline(int num, Paradigm paradigm) {
         if (num < 1) {
             System.out.printf("Num = %s%n", num);
