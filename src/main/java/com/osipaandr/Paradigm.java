@@ -1,4 +1,4 @@
-package osipaandr;
+package com.osipaandr;
 
 public class Paradigm {
     Gender gender;

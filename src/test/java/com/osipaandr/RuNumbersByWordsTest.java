@@ -1,4 +1,4 @@
-package osipaandr;
+package com.osipaandr;
 
 import org.junit.jupiter.api.Test;
 
@@ -28,6 +28,17 @@ class RuNumbersByWordsTest {
         assertInclination("пятнадцать тысяч сто два", 15_102);
         assertInclination("четыре миллиона триста пятьдесят тысяч девятьсот восемьдесят семь", 4_350_987);
         assertInclination("сорок миллионов сорок", 40_000_040);
+    }
+
+    void assertInclination(String phrase, int number, Gender gender) {
+        assertEquals(phrase, RuNumbersByWords.incline(number, gender));
+    }
+
+    @Test
+    void testNumbersWithGenders() {
+        assertInclination("две", 2, Gender.FEMININE);
+        assertInclination("двести один", 201, Gender.MASCULINE);
+        assertInclination("одна тысяча одно", 1001, Gender.NEUTER);
     }
 
     void assertInclination(String phrase, int number, Paradigm paradigm) {

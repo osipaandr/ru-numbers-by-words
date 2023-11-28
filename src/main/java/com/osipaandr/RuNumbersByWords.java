@@ -1,4 +1,4 @@
-package osipaandr;
+package com.osipaandr;
 
 public class RuNumbersByWords {
 
@@ -155,7 +155,7 @@ public class RuNumbersByWords {
         if (modOf1000 == 0)
             return incline(divOf1000, thousandParadigm);
 
-        String rest = incline(modOf1000);
+        String rest = incline(modOf1000, gender);
         return rest == null
                 ? incline(divOf1000, thousandParadigm)
                 : String.format("%s %s", incline(divOf1000, thousandParadigm), rest);
@@ -214,5 +214,4 @@ public class RuNumbersByWords {
                 incline(num, paradigm.gender),
                 determineForm(num, paradigm));
     }
-
 }
