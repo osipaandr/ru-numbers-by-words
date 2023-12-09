@@ -1,4 +1,4 @@
-package com.osipaandr;
+package com.github.osipaandr;
 
 import org.junit.jupiter.api.Test;
 
