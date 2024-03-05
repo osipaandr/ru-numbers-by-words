@@ -1,6 +1,15 @@
 package com.github.osipaandr;
 
+/**
+ * Класс предоставляет статические методы для склонения числительных и
+ * сопутствующих слов в различные формы, такие как именительный, родительный и т. д.
+ * для использования в текстовых представлениях, например, при формировании документации,
+ * отчетов или других локализованных строк.
+ */
 public class RuNumbersByWords {
+
+    private RuNumbersByWords() {
+    }
 
     private static final Paradigm thousandParadigm =
             new Paradigm(Gender.FEMININE,
