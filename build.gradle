@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'io.github.osipaandr'
-version = '1.0.0-SNAPSHOT'
+version = '1.0.0'
 
 repositories {
     mavenCentral()
@@ -17,12 +17,15 @@ publishing {
             from components.java
 
             pom {
+                name = 'ru-numbers-by-words'
+                description = 'Library for converting numbers to words in Russian'
                 url = 'https://github.com/osipaandr/ru-numbers-by-words'
                 inceptionYear = '2023'
 
                 licenses {
                     license {
-                        name = 'Unlicensed'
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                         distribution = 'repo'
                     }
                 }
@@ -36,6 +39,7 @@ publishing {
                 scm {
                     url = 'https://github.com/osipaandr/ru-numbers-by-words'
                     connection = 'scm:https://github.com/osipaandr/ru-numbers-by-words'
+                    developerConnection = 'scm:git:ssh://github.com:osipaandr/ru-numbers-by-words.git'
                 }
             }
 
@@ -51,8 +55,8 @@ publishing {
             url = project.version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
 
             credentials {
-                username = project.findProperty("mavenCentralUsername")
-                password = project.findProperty("mavenCentralPassword")
+                username = project.findProperty("mavenCentralUsername") ?: System.getenv("MAVEN_USERNAME")
+                password = project.findProperty("mavenCentralPassword") ?: System.getenv("MAVEN_PASSWORD")
             }
         }
     }
@@ -61,6 +65,8 @@ publishing {
 java {
     withJavadocJar()
     withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 signing {
@@ -74,4 +80,11 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+task printCredentials {
+    doLast {
+        println "Username: " + (project.findProperty("mavenCentralUsername") ?: "не определено")
+        println "Password: " + (project.findProperty("mavenCentralPassword") ?: "не определено")
+    }
 }
