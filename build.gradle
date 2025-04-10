@@ -4,21 +4,18 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'com.github.osipaandr'
+group = 'io.github.osipaandr'
 version = '1.0.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
-java {
-    withJavadocJar()
-    withSourcesJar()
-}
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
+            from components.java
+
             pom {
                 url = 'https://github.com/osipaandr/ru-numbers-by-words'
                 inceptionYear = '2023'
@@ -49,8 +46,8 @@ publishing {
         maven {
             name = 'sonatype'
 
-            def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-            def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
             url = project.version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
 
             credentials {
@@ -59,6 +56,11 @@ publishing {
             }
         }
     }
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 signing {

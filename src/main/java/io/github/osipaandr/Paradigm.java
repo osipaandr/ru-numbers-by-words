@@ -1,4 +1,4 @@
-package com.github.osipaandr;
+package io.github.osipaandr;
 
 /**
  * Представляет собой образец склонения существительного в русском языке с учетом рода и падежей.

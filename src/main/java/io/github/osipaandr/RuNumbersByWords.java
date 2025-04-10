@@ -1,4 +1,4 @@
-package com.github.osipaandr;
+package io.github.osipaandr;
 
 /**
  * Класс предоставляет статические методы для склонения числительных и
