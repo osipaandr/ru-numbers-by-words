@@ -1,6 +1,18 @@
 # RuNumbersByWords
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.osipaandr/ru-numbers-by-words.svg?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.osipaandr/ru-numbers-by-words)
+
 Библиотека для записи и склонения русских числительных из чисел.
+
+### Зависимость
+
+```xml
+<dependency>
+    <groupId>io.github.osipaandr</groupId>
+    <artifactId>ru-numbers-by-words</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
 
 ### Как использовать
 

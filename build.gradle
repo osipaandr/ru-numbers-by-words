@@ -2,6 +2,7 @@ plugins {
     id 'signing'
     id 'java-library'
     id 'maven-publish'
+    id 'io.gitee.pkmer.sonatype-central-publisher' version '1.1.0'
 }
 
 group = 'io.github.osipaandr'
@@ -48,16 +49,8 @@ publishing {
 
     repositories {
         maven {
-            name = 'sonatype'
-
-            def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-            def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-            url = project.version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
-
-            credentials {
-                username = project.findProperty("mavenCentralUsername") ?: System.getenv("MAVEN_USERNAME")
-                password = project.findProperty("mavenCentralPassword") ?: System.getenv("MAVEN_PASSWORD")
-            }
+            name = 'centralPortalStaging'
+            url = layout.buildDirectory.dir('repos/bundles')
         }
     }
 }
@@ -71,6 +64,14 @@ java {
 
 signing {
     sign publishing.publications.mavenJava
+}
+
+pkmerBoot {
+    sonatypeMavenCentral {
+        stagingRepository = layout.buildDirectory.dir("repos/bundles")
+        username = project.findProperty("mavenCentralUsername") ?: System.getenv("MAVEN_USERNAME")
+        password = project.findProperty("mavenCentralPassword") ?: System.getenv("MAVEN_PASSWORD")
+    }
 }
 
 dependencies {
